@@ -14,6 +14,11 @@ namespace XtramileWeather.Services
     {
         private readonly ILogger<XtramileWeatherService> _logger;
 
+        public XtramileWeatherService(ILogger<XtramileWeatherService> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task<WeatherResponse> GetWeather(string city)
         {
             try

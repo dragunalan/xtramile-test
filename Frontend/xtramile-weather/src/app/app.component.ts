@@ -4,6 +4,7 @@ import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WeatherResponse, Wind } from './weather-object';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * @title Basic select
@@ -16,7 +17,7 @@ import { WeatherResponse, Wind } from './weather-object';
   imports:[MatSelectModule, CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class AppComponent implements OnInit  {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private toastr: ToastrService) {}
     countries : any = [];
     cities : any = [];
     city = new FormControl('', Validators.required);
@@ -58,6 +59,11 @@ export class AppComponent implements OnInit  {
       
        this.http.get<any>('http://localhost:5000/weather-city?city=' + this.city.value, {headers} ).subscribe((data : WeatherResponse) => {
         this.weatherResponse = data;
-       })
+        if(this.weatherResponse.errorMessage)
+          this.toastr.error(this.weatherResponse.errorMessage, 'Error');
+        else
+          this.toastr.success('Successfull', 'Message');
+       },
+       (err) => {this.toastr.error(err, 'Error')});
    }
 }

@@ -36,6 +36,7 @@ export interface WeatherResponse {
     name: string;
     cod: number;
     time:Date;
+    errorMessage:string;
 }
 
 export interface Sys {
