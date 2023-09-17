@@ -69,3 +69,4 @@ C:\xtramile-test\Backend\XtramileWeather\bin\Debug\netcoreapp3.1\Swashbuckle.Asp
 C:\xtramile-test\Backend\XtramileWeather\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\xtramile-test\Backend\XtramileWeather\obj\Debug\netcoreapp3.1\XtramileWeather.csproj.AssemblyReference.cache
 C:\xtramile-test\Backend\XtramileWeather\obj\Debug\netcoreapp3.1\XtramileWeather.MvcApplicationPartsAssemblyInfo.cs
+C:\xtramile-test\Backend\XtramileWeather\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
+using System;
+using XtramileWeather.Services;
 
 namespace XtramileWeather
 {
@@ -20,6 +23,9 @@ namespace XtramileWeather
         {
             services.AddSwaggerGen();
             services.AddControllersWithViews();
+            services.AddMvc();
+
+            services.AddSingleton<IXtramileWeatherService, XtramileWeatherService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +42,11 @@ namespace XtramileWeather
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors(builder => builder
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowAnyOrigin()
+             );
 
             app.UseAuthorization();
 
